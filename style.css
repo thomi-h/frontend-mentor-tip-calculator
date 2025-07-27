@@ -1,0 +1,260 @@
+:root {
+  --Green-400: hsl(172, 67%, 45%);
+
+  --Green-900: hsl(183, 100%, 15%);
+  --Grey-500: hsl(186, 14%, 43%);
+  --Grey-400: hsl(184, 14%, 56%);
+  --Grey-200: hsl(185, 41%, 84%);
+  --Grey-50: hsl(189, 47%, 97%);
+  --White: hsl(0, 100%, 100%);
+
+  --spacing-l: 2.25rem;
+  --spacing-m: 1.5rem;
+  --spacing-s: 0.75rem;
+  --spacing-xs: 0.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+body {
+  font-style: normal;
+  background-color: var(--Grey-200);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-l) 0;
+}
+
+header {
+  width: fit-content;
+  padding-bottom: var(--spacing-m);
+}
+
+article {
+  width: 100%;
+  background-color: var(--White);
+  padding: var(--spacing-m);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  padding-bottom: var(--spacing-m);
+}
+
+.tip-section > label {
+  padding-bottom: var(--spacing-xs);
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-xs);
+}
+
+.tip-section > label {
+  display: block;
+  color: var(--Grey-400);
+}
+
+label[for="bill-input"],
+label[for="tip-selection"],
+label[for="people"] {
+  display: block;
+  color: var(--Grey-400);
+}
+
+input[name="bill-input"],
+input[name="people"] {
+  width: 100%;
+  padding: var(--spacing-xs);
+  border: 1px solid transparent;
+  color: var(--Green-900);
+  font-size: 1.5rem;
+  text-align: right;
+  background: no-repeat;
+  background-position: 16px 16px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[name="bill-input"]::-webkit-inner-spin-button,
+input[name="bill-input"]::-webkit-outer-spin-button,
+input[name="people"]::-webkit-inner-spin-button,
+input[name="people"]::-webkit-outer-spin-button,
+input.custom-input::-webkit-inner-spin-button,
+input.custom-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[name="bill-input"] {
+  background-image: url(./images/icon-dollar.svg);
+  background-color: var(--Grey-50);
+}
+
+input[name="people"] {
+  background-image: url(./images/icon-person.svg);
+  background-color: var(--Grey-50);
+}
+
+input[name="bill-input"]:focus,
+input[name="people"]:focus {
+  outline: 2px solid var(--Green-400);
+}
+
+input[name="bill-input"].error,
+input[name="people"].error {
+  outline: 2px solid salmon;
+}
+
+.error-message {
+  color: salmon;
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.tip-selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-s);
+
+  input[type="number"] {
+    width: 100%;
+    font-size: 1.25rem;
+    text-align: end;
+    padding: var(--spacing-xs) var(--spacing-s) var(--spacing-xs);
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    background-color: var(--Grey-50);
+    color: var(--Green-900);
+    cursor: pointer;
+  }
+  input[type="number"]:focus {
+    outline: 2px solid var(--Green-400);
+  }
+}
+
+.tip {
+  height: fit-content;
+}
+
+.tip label {
+  font-size: 1.25rem;
+  display: block;
+  background-color: var(--Green-900);
+  color: var(--White);
+  padding: var(--spacing-xs) 0;
+  text-align: center;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-input:checked + label {
+  background-color: var(--Green-400);
+  color: var(--Green-900);
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: none;
+}
+
+.result {
+  background-color: var(--Green-900);
+  padding: var(--spacing-m);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.result-text p:first-child {
+  font-size: 1rem;
+  color: var(--White);
+}
+
+.result-text p:last-child {
+  font-size: 0.75rem;
+  color: var(--Grey-50);
+}
+
+.tip-result {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount {
+  color: var(--Green-400);
+  font-size: 1.5rem;
+}
+
+.reset {
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  outline: 1px solid transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-s) 0;
+  width: 100%;
+  background-color: var(--Green-400);
+  color: var(--Green-900);
+}
+
+.reset:hover,
+.tip label:hover {
+  background-color: var(--Grey-200);
+  color: var(--Green-900);
+}
+
+@media (min-width: 64rem) {
+  body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+  }
+  .calculator-wrapper {
+    max-width: 50rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-l);
+    border-radius: 1rem;
+  }
+
+  .tip-selection {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .result {
+    padding: var(--spacing-l) var(--spacing-m);
+    gap: var(--spacing-l);
+  }
+
+  .reset {
+    margin-top: auto;
+    font-size: 1.5rem;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
